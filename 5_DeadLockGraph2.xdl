@@ -1,0 +1,50 @@
+﻿<deadlock>
+  <victim-list>
+    <victimProcess id="process173a8d368c8" />
+  </victim-list>
+  <process-list>
+    <process id="process173a8d368c8" taskpriority="0" logused="232" waitresource="RID: 2:5:272:0" waittime="5440" ownerId="8549652" transactionname="user_transaction" lasttranstarted="2020-10-24T22:25:51.617" XDES="0x173b57a0428" lockMode="U" schedulerid="10" kpid="29336" status="suspended" spid="66" sbid="0" ecid="0" priority="0" trancount="2" lastbatchstarted="2020-10-24T22:26:01.527" lastbatchcompleted="2020-10-24T22:26:01.523" lastattention="1900-01-01T00:00:00.523" clientapp="Microsoft SQL Server Management Studio - Query" hostname="DEADPOOL" hostpid="5136" loginname="DEADPOOL\danth" isolationlevel="read committed (2)" xactid="8549652" currentdb="13" currentdbname="foo2" lockTimeout="4294967295" clientoption1="671090784" clientoption2="390200">
+      <executionStack>
+        <frame procname="adhoc" line="1" stmtstart="60" stmtend="174" sqlhandle="0x0200000005c377275f5aa4289ed41614403bd907438c52990000000000000000000000000000000000000000">
+unknown    </frame>
+        <frame procname="adhoc" line="1" stmtend="124" sqlhandle="0x020000005b3a8b00c2711b2c7c1cba7e55da85e2d31993f20000000000000000000000000000000000000000">
+unknown    </frame>
+      </executionStack>
+      <inputbuf>
+UPDATE ##Suppliers
+SET Fax = N'555-1212'
+WHERE SupplierId = 1   </inputbuf>
+    </process>
+    <process id="process173a8d23088" taskpriority="0" logused="240" waitresource="RID: 2:6:56:0" waittime="1714" ownerId="8549706" transactionname="user_transaction" lasttranstarted="2020-10-24T22:25:57.453" XDES="0x173de668428" lockMode="U" schedulerid="12" kpid="3464" status="suspended" spid="51" sbid="0" ecid="0" priority="0" trancount="2" lastbatchstarted="2020-10-24T22:26:05.253" lastbatchcompleted="2020-10-24T22:26:05.250" lastattention="1900-01-01T00:00:00.250" clientapp="Microsoft SQL Server Management Studio - Query" hostname="DEADPOOL" hostpid="5136" loginname="DEADPOOL\danth" isolationlevel="read committed (2)" xactid="0" currentdb="1" currentdbname="master" lockTimeout="4294967295" clientoption1="671090784" clientoption2="390200">
+      <executionStack>
+        <frame procname="adhoc" line="2" stmtstart="60" stmtend="168" sqlhandle="0x02000000ba4fcb1f48dd10c9eceef5c1f8f397fec3b6b56b0000000000000000000000000000000000000000">
+unknown    </frame>
+        <frame procname="adhoc" line="2" stmtstart="20" stmtend="254" sqlhandle="0x02000000ee047934b932e5090ef59daba511d8f8af1f73d20000000000000000000000000000000000000000">
+unknown    </frame>
+      </executionStack>
+      <inputbuf>
+
+							 UPDATE ##Employees
+                             SET Phone = N'555-9999'
+                             WHERE EmpId = 1   </inputbuf>
+    </process>
+  </process-list>
+  <resource-list>
+    <ridlock fileid="5" pageid="272" dbid="2" objectname="tempdb.dbo.##Suppliers" id="lock173b6508a00" mode="X" associatedObjectId="8791028333568000000">
+      <owner-list>
+        <owner id="process173a8d23088" mode="X" />
+      </owner-list>
+      <waiter-list>
+        <waiter id="process173a8d368c8" mode="U" requestType="wait" />
+      </waiter-list>
+    </ridlock>
+    <ridlock fileid="6" pageid="56" dbid="2" objectname="tempdb.dbo.##Employees" id="lock173a5f60a80" mode="X" associatedObjectId="8718970739489112064">
+      <owner-list>
+        <owner id="process173a8d368c8" mode="X" />
+      </owner-list>
+      <waiter-list>
+        <waiter id="process173a8d23088" mode="U" requestType="wait" />
+      </waiter-list>
+    </ridlock>
+  </resource-list>
+</deadlock>
